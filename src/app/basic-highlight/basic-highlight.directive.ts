@@ -12,6 +12,8 @@ export class BasicHighlightDirective implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line:max-line-length
     //  what we're doing here is we're getting access to the element the directive was placed on, getting access to that exact element and then we're overriding the style of this element.
+    // tslint:disable-next-line:max-line-length
+    // because Angular actually is also able to render your templates without a DOM and then these properties might not be available. It could do this when using service workers, so basically some advanced use cases but nonetheless, it's not a good practice to directly access your elements.
     this.elementRef.nativeElement.style.backgroundColor = 'red';
   }
 
