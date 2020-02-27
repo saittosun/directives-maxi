@@ -1,4 +1,4 @@
-import { Directive, Renderer2, OnInit, ElementRef, HostListener } from '@angular/core';
+import { Directive, Renderer2, OnInit, ElementRef, HostListener, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appBetterHighlight]'
@@ -13,14 +13,19 @@ export class BetterHighlightDirective implements OnInit {
     //                        'backgroundColor', 'blue');
   }
 
-  // maxi heriki hostlistenerda da renkden sonra false, false yazdi
+  // maxi heriki hostlistenerda da renkden sonra false, false yazdi.asagidaki kirmizi bolumler ne anlatiyor???
   @HostListener('mouseenter') mouseover(eventData: Event) {
-    this.renderer.setStyle(this.elRef.nativeElement,
-                          'backgroundColor', 'blue');
+    // this.renderer.setStyle(this.elRef.nativeElement,
+    //                       'backgroundColor', 'blue');
+    this.backgroundColor = 'blue';
   }
 
   @HostListener('mouseleave') mouseleave(eventData: Event) {
-    this.renderer.setStyle(this.elRef.nativeElement,
-                          'backgroundColor', 'pink');
+    // this.renderer.setStyle(this.elRef.nativeElement,
+    //                       'backgroundColor', 'pink');
+    this.backgroundColor = 'transparent';
   }
+
+  // in @HostBinding, we can pass a string defining to which property of the hosting element we want to bind.
+  @HostBinding('style.backgroundColor') backgroundColor: string = 'transparent';
 }
