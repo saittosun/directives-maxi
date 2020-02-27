@@ -28,7 +28,15 @@
         </div>
       </ul>
       <p appBasicHighlight>style me with basic directive</p>
-      <p appBetterHighlight>style me with basic directive</p>
+      <!-- <p 
+        appBetterHighlight 
+        [defaultColor]="'yellow'"
+        [highlightColor]="'red'">style me with basic directive</p> -->
+
+        <!-- the directive name is not enclosed in square brackets, that reallyonly happens if you want to bind to a property which has the same name or alias like your directive selector. -->
+      <p
+        [appBetterHighlight]="'red'" 
+        defaultColor="yellow">style me with basic directive</p>
     </div>
   </div>
 </div>
